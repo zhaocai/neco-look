@@ -3,6 +3,10 @@ let s:source = {
       \ 'kind': 'plugin',
       \ }
 
+if exists('g:neocomplcache_source_look_dictionary_path')
+  let g:neocomplcache_source_look_dictionary_path = ''
+endif
+
 function! s:source.initialize()
   call neocomplcache#set_completion_length('look', 3)
 endfunction
@@ -16,10 +20,14 @@ function! s:source.get_keyword_list(cur_keyword_str)
     return []
   endif
 
-  return map(split(neocomplcache#system('look ' . a:cur_keyword_str), "\n"),
-        \ "{'word': v:val, 'menu': 'look'}")
+  let list = neocomplcache#is_win() ?
+        \ split(neocomplcache#system('grep ' . a:cur_keyword_str .
+        \    ' ' . g:neocomplcache_source_look_dictionary_path), "\n") :
+        \ split(neocomplcache#system('look ' . a:cur_keyword_str), "\n")
+
+  return map(list, "{'word': v:val, 'menu': 'look'}")
 endfunction
 
 function! neocomplcache#sources#look#define()
-  return executable('look') ? s:source : {}
+  return (neocomplcache#is_win() ? executable('grep') && g:neocomplcache_source_look_dictionary_path != '' : executable('look')) ? s:source : {}
 endfunction
