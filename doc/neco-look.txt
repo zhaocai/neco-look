@@ -27,7 +27,7 @@ INSTALL							*neco-look-install*
 command(Windows).
 3. Set |g:neocomplcache_source_look_dictionary_path| variable (Windows
 only).
-3. Unarchive neco-look and put it into a dir of your 'runtimepath'.
+4. Unarchive neco-look and put it into a dir of your 'runtimepath'.
 
 ==============================================================================
 INTERFACE						*neco-look-interface*
