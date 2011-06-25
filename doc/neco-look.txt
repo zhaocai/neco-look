@@ -1,0 +1,51 @@
+*neco-look.txt*	A neocomplcache plugin for "look" command for completing words in English
+
+Version: 1.2
+Author : Tatsuhiro Ujihisa <ujihisa at gmail.com>
+         Shougo <Shougo.Matsu@gmail.com>
+License: Unknown  {{{
+}}}
+
+CONTENTS						*neco-look-contents*
+
+Introduction		|neco-look-introduction|
+Install			|neco-look-install|
+Interface		|neco-look-interface|
+  Variables		  |neco-look-variables|
+Changelog		|neco-look-changelog|
+
+==============================================================================
+INTRODUCTION						*neco-look-introduction*
+
+A neocomplcache plugin for "look" command for completing words in English.
+
+==============================================================================
+INSTALL							*neco-look-install*
+
+1. Install the latest neocomplcache.vim
+2. Make sure if you already have "look" command(Linux/Mac) or "grep"
+command(Windows).
+3. Set |g:neocomplcache_source_look_dictionary_path| variable (Windows
+only).
+3. Unarchive neco-look and put it into a dir of your 'runtimepath'.
+
+==============================================================================
+INTERFACE						*neco-look-interface*
+
+------------------------------------------------------------------------------
+VARIABLES 						*neocomplcache-variables*
+
+g:neocomplcache_source_look_dictionary_path		*g:neocomplcache_source_look_dictionary_path*
+		The Path to a English words dictionary.  This variable is
+		used Windows only.
+		
+		Default value is empty string.
+
+==============================================================================
+CHANGELOG						*neocomplcache-changelog*
+
+2011-06-25
+* Added documentation file.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:fdl=0:noet:
