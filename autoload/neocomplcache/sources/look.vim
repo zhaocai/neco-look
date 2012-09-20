@@ -3,12 +3,12 @@ let s:source = {
             \ 'kind': 'plugin',
             \ }
 
-call zlib#rc#set_default({
+call zl#rc#set_default({
             \ 'g:neocomplcache_source_look_enable_rules'    : {
-            \     'text_mode'   : 1 ,
+            \     'text_mode'      : 1 ,
+            \     'within_comment' : 1 ,
             \     'syntax_mode' : {
-            \         'Comment'        : 1 ,
-            \         'SpecialComment' : 1 ,
+            \         'String'     : 1 ,
             \     },
             \ },
             \
@@ -18,7 +18,7 @@ call zlib#rc#set_default({
 
 
 function! s:source.initialize()
-    call neocomplcache#set_completion_length('look', 4)
+    call neocomplcache#set_completion_length('look', 3)
     " Set rank.
     call neocomplcache#set_dictionary_helper(g:neocomplcache_source_rank,
                 \ 'look', 3)
@@ -29,18 +29,22 @@ endfunction
 
 function! s:check_enable_rules(erules)
     let r = a:erules
-    let hlgroup = zlib#syntax#cursor_trans_hlgroup({'col' : col('.') - 1})
 
+    if r['text_mode'] && neocomplcache#is_text_mode()
+	return 1
+    endif
+
+    if r['within_comment'] && neocomplcache#within_comment()
+	return 1
+    endif
+
+    let hlgroup = zl#syntax#cursor_trans_hlgroup({'col' : col('.') - 1})
     if !empty(hlgroup) && has_key(r['syntax_mode'], hlgroup)
                 \ && r.syntax_mode[hlgroup] == 1
         return 1
     endif
 
-    if r['text_mode'] && !neocomplcache#is_text_mode()
-	return 0
-    endif
-
-    return 1
+    return 0
 endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
