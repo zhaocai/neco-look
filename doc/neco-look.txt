@@ -42,7 +42,7 @@ g:neocomplcache_source_look_dictionary_path		*g:neocomplcache_source_look_dictio
 		Default value is empty string.
 
 ==============================================================================
-CHANGELOG						*neocomplcache-changelog*
+CHANGELOG						*neoco-look-changelog*
 
 2011-06-25
 * Added documentation file.
