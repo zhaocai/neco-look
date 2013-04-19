@@ -33,7 +33,7 @@ only).
 INTERFACE						*neco-look-interface*
 
 ------------------------------------------------------------------------------
-VARIABLES 						*neocomplcache-variables*
+VARIABLES 						neco-look-variables*
 
 g:neocomplcache_source_look_dictionary_path		*g:neocomplcache_source_look_dictionary_path*
 		The Path to a English words dictionary.  This variable is
